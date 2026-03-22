@@ -4,97 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dedhi Babyshop - Perlengkapan Renang Anak</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
         /* Desain dasar website */
         body { 
-            font-family: Arial, sans-serif; 
-            background-color: #f4f8fb; /* Warna biru air laut muda */
+            font-family: 'Poppins', sans-serif; 
+            background-color: #f0f7fb; /* Biru laut pastel yang lebih lembut */
             margin: 0;
             padding: 0;
             text-align: center; 
+            color: #333;
         }
+
+        /* Header yang Ceria dan Melengkung */
         .header { 
-            background-color: #ff99cc; /* Warna pink ceria khas babyshop */
-            padding: 25px; 
+            /* Gradien cerah namun tetap lembut */
+            background: linear-gradient(135deg, #ff7eb3 0%, #ffb3c6 50%, #ffcda5 100%);
+            padding: 40px 20px 50px 20px; 
             color: white; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 0 0 40px 40px; /* Lengkungan di bagian bawah */
+            box-shadow: 0 4px 15px rgba(255, 126, 179, 0.3);
+            margin-bottom: 30px;
         }
-        .header h1 { margin: 0; font-size: 28px; }
-        .header p { margin: 5px 0 0 0; font-size: 16px; }
+        .header h1 { 
+            margin: 0; 
+            font-family: 'Baloo 2', cursive; /* Font tebal dan bulat */
+            font-size: 42px; 
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .header p { 
+            margin: 10px 0 0 0; 
+            font-size: 18px; 
+            font-weight: 300;
+        }
         
         /* Grid untuk produk */
         .catalog { 
             display: flex; 
             flex-wrap: wrap; 
             justify-content: center; 
-            gap: 20px; 
-            padding: 30px; 
+            gap: 25px; 
+            padding: 0 20px 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
         /* Kartu masing-masing produk */
         .product-card { 
             background: white; 
-            border-radius: 12px; 
+            border-radius: 16px; /* Sudut lebih bulat */
             padding: 15px; 
             width: 260px; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-            transition: transform 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05); 
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
         }
-        .product-card:hover { transform: translateY(-5px); }
+        .product-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
         .product-card img { 
             width: 100%; 
             height: 250px;
             object-fit: cover;
-            border-radius: 8px; 
+            border-radius: 12px; 
         }
-        .product-title { font-size: 18px; font-weight: bold; margin: 12px 0 8px 0; color: #333; }
-        .product-price { color: #ee4d2d; font-size: 18px; font-weight: bold; }
-        .product-stock { font-size: 14px; color: #666; margin: 8px 0 15px 0; }
+
+        /* Label Status (Badge) */
+        .badge {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .badge.ready { background-color: #4CAF50; } /* Hijau */
+        .badge.limited { background-color: #FF9800; } /* Orange */
+        .badge.preorder { background-color: #2196F3; } /* Biru */
+
+        /* Detail Produk */
+        .product-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-title { 
+            font-size: 18px; 
+            font-weight: 600; 
+            margin: 15px 0 5px 0; 
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+        .product-price { 
+            color: #ee4d2d; 
+            font-size: 20px; 
+            font-family: 'Baloo 2', cursive;
+            font-weight: 700; 
+            margin-bottom: 15px;
+        }
         
         /* Tombol Shopee */
         .shopee-btn { 
-            background-color: #ee4d2d; /* Warna khas Shopee */
+            background: linear-gradient(90deg, #f53d2d, #ff6633);
             color: white; 
             text-decoration: none; 
-            padding: 10px 15px; 
-            border-radius: 5px; 
+            padding: 12px 15px; 
+            border-radius: 8px; 
             display: block; 
-            font-weight: bold; 
+            font-weight: 600; 
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 14px;
         }
-        .shopee-btn:hover { background-color: #d73a1e; }
+        .shopee-btn:hover { 
+            background: linear-gradient(90deg, #e03020, #f55522);
+            transform: scale(1.03);
+            box-shadow: 0 4px 10px rgba(238, 77, 45, 0.3);
+        }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h1>Dedhi Babyshop</h1>
-        <p>Spesialis Baju Renang, Kostum Mermaid & Pelampung Anak</p>
+        <p>Spesialis Baju Renang, Kostum Mermaid & Pelampung Anak 🌊✨</p>
     </div>
 
     <div class="catalog">
         
         <div class="product-card">
-            <img src="https://via.placeholder.com/250x250?text=Foto+Pelampung" alt="Pelampung Anak">
-            <div class="product-title">Pelampung Lengan Karakter</div>
-            <div class="product-price">Rp 45.000</div>
-            <div class="product-stock">Keterangan: Tersedia</div>
-            <a href="LINK_SHOPEE_PRODUK_1" class="shopee-btn" target="_blank">Beli di Shopee</a>
+            <span class="badge ready">Tersedia</span>
+            <img src="https://via.placeholder.com/250x250/ffb3c6/ffffff?text=Foto+Pelampung" alt="Pelampung Anak">
+            <div class="product-info">
+                <div class="product-title">Pelampung Lengan Karakter Lucu</div>
+                <div class="product-price">Rp 45.000</div>
+                <a href="LINK_SHOPEE_PRODUK_1" class="shopee-btn" target="_blank">🛒 Beli di Shopee</a>
+            </div>
         </div>
 
         <div class="product-card">
-            <img src="https://via.placeholder.com/250x250?text=Foto+Mermaid" alt="Kostum Mermaid">
-            <div class="product-title">Kostum Mermaid Anak Set</div>
-            <div class="product-price">Rp 85.000</div>
-            <div class="product-stock">Keterangan: Sisa 5 pcs</div>
-            <a href="LINK_SHOPEE_PRODUK_2" class="shopee-btn" target="_blank">Beli di Shopee</a>
+            <span class="badge limited">Sisa 5 pcs</span>
+            <img src="https://via.placeholder.com/250x250/a0e8ef/ffffff?text=Foto+Mermaid" alt="Kostum Mermaid">
+            <div class="product-info">
+                <div class="product-title">Kostum Mermaid Anak Set Lengkap</div>
+                <div class="product-price">Rp 85.000</div>
+                <a href="LINK_SHOPEE_PRODUK_2" class="shopee-btn" target="_blank">🛒 Beli di Shopee</a>
+            </div>
         </div>
 
         <div class="product-card">
-            <img src="https://via.placeholder.com/250x250?text=Foto+Baju+Renang" alt="Baju Renang">
-            <div class="product-title">Baju Renang Bayi Anti UV</div>
-            <div class="product-price">Rp 65.000</div>
-            <div class="product-stock">Keterangan: Pre-Order (3 Hari)</div>
-            <a href="LINK_SHOPEE_PRODUK_3" class="shopee-btn" target="_blank">Beli di Shopee</a>
+            <span class="badge preorder">Pre-Order (3 Hari)</span>
+            <img src="https://via.placeholder.com/250x250/ffda79/ffffff?text=Foto+Baju+Renang" alt="Baju Renang">
+            <div class="product-info">
+                <div class="product-title">Baju Renang Bayi Anti UV Premium</div>
+                <div class="product-price">Rp 65.000</div>
+                <a href="LINK_SHOPEE_PRODUK_3" class="shopee-btn" target="_blank">🛒 Beli di Shopee</a>
+            </div>
         </div>
 
     </div>
