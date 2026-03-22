@@ -1,1 +1,1 @@
-(https://[dedhibabyshop].github.io/[dedhi.babyshop]/)
+(https://dedhibabyshop.github.io/dedhi.babyshop/)
